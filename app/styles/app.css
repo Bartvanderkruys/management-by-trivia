@@ -1,0 +1,36 @@
+body {
+    font-family: 'roboto', sans-serif;
+    background: #F5F5F5;
+    color: #272727
+}
+
+h1 {
+    font-family: "Bree Serif", serif;
+    max-width: 350px;
+}
+
+.btn-primary {
+    background-color: #272727;
+    border-color: #272727;
+}
+
+.btn-primary:hover {
+    background-color: #585858;
+    border-color: #585858;
+}
+
+#introduction {
+    font-size: 18px;
+    text-align: justify;
+    text-justify: inter-word;
+    max-width: 400px;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin:auto;
+}
+
+#introduction-text {
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+

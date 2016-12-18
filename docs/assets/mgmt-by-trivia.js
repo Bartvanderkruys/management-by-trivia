@@ -785,7 +785,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("mgmt-by-trivia/app")["default"].create({"name":"mgmt-by-trivia","version":"0.0.0+f1550f60"});
+  require("mgmt-by-trivia/app")["default"].create({"name":"mgmt-by-trivia","version":"0.0.0+826854ca"});
 }
 
 /* jshint ignore:end */

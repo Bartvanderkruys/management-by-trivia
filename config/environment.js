@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'mgmt-by-trivia',
     environment: environment,
-    rootURL: '/',
+    rootURL: '/mgmt-by-trivia/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {

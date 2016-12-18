@@ -1,0 +1,15 @@
+<div class="row top-card-row">
+
+    {{ initiate-card columnWidth=initiateCardWidth canStart=hasTaskAndReward }}
+
+    {{ introduction-card columnWidth=introductionCardWidth onClickPrimary=(action "displayLists") }}
+
+</div>
+
+<div class="row bottom-card-row">
+
+    {{ task-card columnWidth=taskCardWidth }}
+
+    {{ reward-card columnWidth=rewardCardWidth }}
+
+</div>

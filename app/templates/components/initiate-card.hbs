@@ -1,0 +1,21 @@
+{{#if columnWidth }}
+    <div class="col-md-{{ columnWidth }}">
+
+        <div id="introduction" class="card">
+
+            <h1>Time management by trivia</h1>
+
+            <div id="introduction-text">
+                <p>
+                    We can start managing your time when you have defined at least one task and one reward.<br/>
+                    Add items to the lists below to do so.
+                </p>
+            </div>
+
+            <button class="btn btn-primary {{unless canStart "disabled"}}">
+                Initiate time management procedure
+            </button>
+        </div>
+
+    </div>
+{{/if }}

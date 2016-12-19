@@ -12,10 +12,16 @@
                 </p>
             </div>
 
-            <button class="btn btn-primary {{unless canStart "disabled"}}">
+            <button class="btn btn-primary {{unless canStart "disabled"}}" {{action "startQuiz"}}>
                 Initiate time management procedure
             </button>
         </div>
 
     </div>
 {{/if }}
+
+{{#if quizStarted }}
+
+    {{ quiz-view }}
+
+{{/if}}

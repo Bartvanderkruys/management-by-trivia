@@ -1,17 +1,15 @@
 <div class="row top-card-row">
 
-    {{ initiate-card columnWidth=initiateCardWidth canStart=hasTaskAndReward }}
+    {{ introduction-card columnWidth=introductionCardWidth onClickPrimary=(action "displayLists")}}
 
-    {{ introduction-card columnWidth=introductionCardWidth onClickPrimary=(action "displayLists") }}
-
-    {{ quiz-view questions=questions}}
+    {{ quiz-view questions=questions canStartQuiz=canStartQuiz onQuizStart=(action "hideLists") }}
 
 </div>
 
 <div class="row bottom-card-row">
 
-    {{ task-card columnWidth=taskCardWidth}}
+    {{ task-card columnWidth=taskCardWidth onListItemChanged=(action "onListItemChanged")}}
 
-    {{ reward-card columnWidth=rewardCardWidth}}
+    {{ reward-card columnWidth=rewardCardWidth onListItemChanged=(action "onListItemChanged")}}
 
 </div>

@@ -4,7 +4,9 @@
 
             <h2>Reward</h2>
 
-            {{ editable-list input-placeholder="Watch an episode of Westworld..." storage=rewardsStorage }}
+            {{ editable-list input-placeholder="Watch an episode of Westworld..."
+                             storage=rewardsStorage
+                             onListItemChanged=(action "onListItemChanged")}}
         </div>
     </div>
 {{/if }}

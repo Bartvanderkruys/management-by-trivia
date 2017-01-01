@@ -1,5 +1,31 @@
-{{#each questions as |question|}}
+{{#unless quizStarted}}
+    <div class="col-md-12">
 
-    {{ trivia-question-card question=question}}
+        <div class="card">
+            {{#if canStartQuiz}}
+                <h1>Quiz time!</h1>
+                <p>
+                    Answer 5 questions correctly to receive an award!
+                    Give 5 wrong answers and you are forced to complete a task. <br/>
+                    You will get 15 seconds per question, so think fast!
+                </p>
 
-{{/each}}
+                <button class="btn btn-primary" {{action "startQuiz"}}>Start!</button>
+                <button class="btn btn-default">Back to overview</button>
+            {{else}}
+                <div id="introduction-text">
+                    <p>
+                        We can start managing your time when you have defined at least one task and one reward.<br/>
+                        Add items to the lists below to do so.
+                    </p>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+{{/unless}}
+
+{{#if quizStarted}}
+    {{#each questions as |question|}}
+        {{ trivia-question-card question=question}}
+    {{/each}}
+{{/if}}

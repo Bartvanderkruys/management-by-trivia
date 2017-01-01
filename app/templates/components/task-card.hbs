@@ -5,8 +5,8 @@
             <h2>Tasks</h2>
 
             {{ editable-list input-placeholder="Do the dishes..."
-                             items=tasks
-                             storage=tasksStorage}}
+                             storage=tasksStorage
+                             onListItemChanged=(action "onListItemChanged")}}
         </div>
     </div>
 {{/if}}

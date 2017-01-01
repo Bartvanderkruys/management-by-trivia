@@ -11,9 +11,11 @@ export default Ember.Component.extend({
                 this.get('storage').addObject(this.get('addValue'));
                 this.set('addValue', '');
             }
+            this.get('onListItemChanged')();
         },
         deleteItem(item) {
             this.removeItemFromStorage(item);
+            this.get('onListItemChanged')();
         }
     },
     removeItemFromStorage(item){

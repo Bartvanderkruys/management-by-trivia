@@ -1,1 +1,17 @@
-{{yield}}
+<div class="col-md-12">
+
+    <div class="card quiz-question">
+
+        <h2>{{{question.question}}}</h2>
+
+        {{#each shuffledAnswers as |answer|}}
+
+            <button class="btn btn-default">
+                {{{answer}}}
+            </button>
+
+        {{/each}}
+
+    </div>
+
+</div>

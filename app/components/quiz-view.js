@@ -7,7 +7,6 @@ export default Ember.Component.extend({
 
     init(){
         this._super();
-        this.get('store').findAll('question');
     },
 
     actions: {

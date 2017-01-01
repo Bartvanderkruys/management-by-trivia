@@ -6,7 +6,7 @@ export default Ember.Component.extend({
     tasksStorage: storageFor('Tasks'),
 
     hasTaskAndReward: Ember.computed(function(){
-        return (this.get('rewardsStorage').content.length && this.get('tasksStorage').content.length)
+        return (this.get('rewardsStorage').content.length && this.get('tasksStorage').content.length);
     }),
 
     introductionCardWidth: 6,

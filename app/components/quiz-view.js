@@ -1,17 +1,13 @@
 import Ember from 'ember';
+import {storageFor} from "ember-local-storage";
 
 export default Ember.Component.extend({
     score: 0,
+    store: Ember.inject.service(),
 
     init(){
         this._super();
-        this.get('getTriviaQuestions')();
-    },
-
-    getTriviaQuestions(){
-        jQuery.getJSON('https://opentdb.com/api.php?amount=10').then(function(json) {
-            console.log(json);
-        });
+        this.get('store').findAll('question');
     },
 
     actions: {

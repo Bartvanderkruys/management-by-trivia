@@ -20,7 +20,7 @@ export default Ember.Component.extend({
         let storageItems = this.get('storage').content;
 
         for (let i = 0; i < storageItems.length; i++) {
-            if (storageItems[i] == item) {
+            if (storageItems[i] === item) {
                 storageItems.splice(i, 1);
                 break;
             }

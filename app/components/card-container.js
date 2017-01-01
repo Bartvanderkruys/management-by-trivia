@@ -31,7 +31,7 @@ export default Ember.Component.extend({
     },
 
     willUpdate(){
-        console.log(this.get('hasTaskAndReward'));
+        // TODO Update view.
     },
 
     actions: {

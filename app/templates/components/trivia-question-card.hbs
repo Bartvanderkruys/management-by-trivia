@@ -1,19 +1,31 @@
 <div class="col-md-12">
 
-    <div class="card quiz-question">
+    {{#if answeredCorrectly}}
 
-        <h2>{{{question.question}}}</h2>
+        <div class="card correct-answer">
+            <h2>Correct!</h2>
+        </div>
 
-        <hr/>
+    {{else if answeredIncorrectly}}
 
-        {{#each shuffledAnswers as |answer|}}
+        <div class="card false-answer">
+            <h2>False!</h2>
+        </div>
 
-            <button class="btn btn-default">
-                {{{answer}}}
-            </button>
+    {{else}}
 
-        {{/each}}
+        <div class="card quiz-question">
+            <h2>{{{question.question}}}</h2>
 
-    </div>
+            <hr/>
+
+            {{#each shuffledAnswers as |answer|}}
+                <button {{action "answerQuestion" answer.isCorrect}} class="btn btn-default">
+                    {{{answer.answer}}}
+                </button>
+            {{/each}}
+        </div>
+
+    {{/if}}
 
 </div>

@@ -1,13 +1,40 @@
-{{#unless quizStarted}}
-    <div class="col-md-12">
+{{#if quizStarted}}
 
+    <div class="col-md-12">
+        <div class="card">
+            <h1><span class="monospaced">{{ timeLeft }}</span> Seconds left.</h1>
+            <p>Think fast!</p>
+        </div>
+    </div>
+
+    {{#each questions as |question|}}
+        {{ trivia-question-card question=question onAnswerQuestion=(action 'answerQuestion')}}
+    {{/each}}
+
+{{else if quizFinished}}
+
+    <div class="col-md-12">
+        <div class="card">
+            {{#if isWinner}}
+                <h1>You win!</h1>
+            {{else}}
+                <h1>You lose!</h1>
+            {{/if}}
+        </div>
+    </div>
+
+{{ else }}
+
+    <div class="col-md-12">
         <div class="card">
             {{#if canStartQuiz}}
                 <h1>Quiz time!</h1>
                 <p>
-                    When you click start, ten questions will be displayed. Answer five questions correctly within the time limit to receive
+                    When you click start, ten questions will be displayed. Answer five questions correctly within the
+                    time limit to receive
                     a reward from your reward list.
-                    However, if you give five wrong answers you will be forced to complete a task from your task list! <br/>
+                    However, if you give five wrong answers you will be forced to complete a task from your task list!
+                    <br/>
                 </p>
 
                 <button class="btn btn-primary" {{action "startQuiz"}}>Start!</button>
@@ -21,19 +48,5 @@
                 </div>
             {{/if}}
         </div>
-
     </div>
-{{/unless}}
-
-{{#if quizStarted}}
-    <div class="col-md-12">
-        <div class="card">
-           <h1> {{ timeLeft }} Seconds left.</h1>
-            <p>Think fast!</p>
-        </div>
-    </div>
-
-    {{#each questions as |question|}}
-        {{ trivia-question-card question=question}}
-    {{/each}}
 {{/if}}

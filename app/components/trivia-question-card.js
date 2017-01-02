@@ -3,14 +3,27 @@ import Ember from 'ember';
 export default Ember.Component.extend({
     question: null,
     shuffledAnswers: [],
+    answeredCorrectly: false,
+    answeredIncorrectly: false,
+
     init(){
         this._super();
 
         let answers = this.question.getProperties('incorrect_answers').incorrect_answers;
-        answers.push(this.question.getProperties('correct_answer').correct_answer);
+        let taggedAnswers = [];
 
-        this.shuffledAnswers = this.fyShuffle(answers);
+        for (let answer of answers){
+            taggedAnswers.push({isCorrect: false, answer: answer});
+        }
+
+        taggedAnswers.push({
+            isCorrect: true,
+            answer: this.question.getProperties('correct_answer').correct_answer
+        });
+
+        this.shuffledAnswers = this.fyShuffle(taggedAnswers);
     },
+
     fyShuffle(array) {
         let counter = array.length;
 
@@ -24,5 +37,17 @@ export default Ember.Component.extend({
             array[index] = temp;
         }
         return array;
+    },
+
+    actions: {
+        answerQuestion(isCorrect) {
+            if (isCorrect) {
+                this.set('answeredCorrectly', true);
+                this.get('onAnswerQuestion')(true);
+            } else {
+                this.set('answeredIncorrectly', true);
+                this.get('onAnswerQuestion')(false);
+            }
+        }
     }
 });

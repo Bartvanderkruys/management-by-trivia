@@ -9,7 +9,7 @@ export default DS.RESTAdapter.extend({
     host: 'https://opentdb.com',
     pathForType: function(type){
         if (type === 'result'){
-            return 'api.php?amount=10&type=multiple';
+            return 'api.php?amount=10&type=multiple&difficulty=easy';
         }
     }
 });

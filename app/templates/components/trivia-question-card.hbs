@@ -4,12 +4,14 @@
 
         <div class="card correct-answer">
             <h2>Correct!</h2>
+            <b>Correct answer:</b> {{{ correctAnswer }}}
         </div>
 
     {{else if answeredIncorrectly}}
 
         <div class="card false-answer">
             <h2>False!</h2>
+            <b>Correct answer:</b> {{{ correctAnswer }}}
         </div>
 
     {{else}}

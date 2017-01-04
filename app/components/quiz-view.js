@@ -4,6 +4,7 @@ import {storageFor} from "ember-local-storage";
 export default Ember.Component.extend({
 
     store: Ember.inject.service(),
+
     canStartQuiz: null,
     quizStarted: false,
     quizFinished: false,

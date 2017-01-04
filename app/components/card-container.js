@@ -9,40 +9,29 @@ export default Ember.Component.extend({
         return !!(this.get('rewardsStorage').content.length && this.get('tasksStorage').content.length);
     }),
 
-    introductionCardWidth: 6,
-    taskCardWidth: 0,
-    rewardCardWidth: 0,
+    displayIntroduction: true,
+    displayQuizCard: false,
+    displayLists: false,
 
     init(){
         this._super();
 
         if (this.get('rewardsStorage').content.length || this.get('tasksStorage').content.length ){
-            this.triggerAction({
-                action:'displayLists',
-                target: this
-            });
-        } else {
-            this.triggerAction({
-                action:'displayIntroduction',
-                target: this
-            });
+            this.set('displayIntroduction', false);
+            this.set('displayLists', true);
         }
     },
 
     actions: {
-        displayIntroduction(){
-            this.set('introductionCardWidth', 6);
-            this.set('taskCardWidth', 0);
-            this.set('rewardCardWidth', 0);
+        hideIntroduction(){
+            this.set('displayIntroduction', false);
+            this.set('displayLists', true);
         },
         displayLists(){
-            this.set('introductionCardWidth', 0);
-            this.set('taskCardWidth', 6);
-            this.set('rewardCardWidth', 6);
+            this.set('displayLists', true);
         },
         hideLists(){
-            this.set('taskCardWidth', 0);
-            this.set('rewardCardWidth', 0);
+            this.set('displayLists', false);
         },
         onListItemChanged(){
             this.set('canStartQuiz', (this.get('rewardsStorage').content.length && this.get('tasksStorage').content.length));

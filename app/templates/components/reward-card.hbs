@@ -1,12 +1,10 @@
-{{#if columnWidth }}
-    <div class="col-md-{{columnWidth}}">
-        <div id="rewards-list" class="card">
+<div class="col-md-6">
+    <div id="rewards-list" class="card">
 
-            <h2>Reward</h2>
+        <h2>Reward</h2>
 
-            {{ editable-list input-placeholder="Watch an episode of Westworld..."
-                             storage=rewardsStorage
-                             onListItemChanged=(action "onListItemChanged")}}
-        </div>
+        {{ editable-list input-placeholder="Watch an episode of Westworld..."
+                         storage=rewardsStorage
+                         onListItemChanged=(action "onListItemChanged")}}
     </div>
-{{/if }}
+</div>

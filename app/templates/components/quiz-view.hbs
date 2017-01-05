@@ -10,13 +10,20 @@
                 You have answered 5 correctly. You have earned a reward!
                 We have picked this one for you.
 
-                {{ randomTask }}
+                {{ random-reward }}
+
             {{else}}
                 <h1>You lose!</h1>
-                You have answered 5 incorrectly. Time to complete a task!
-                We have picked this one for you.
+                {{#if timeLeft}}
+                    You have answered 5 incorrectly.
+                {{else}}
+                    Time is up.
+                {{/if}}
 
-                {{ randomTask }}
+                Time to complete a task! We have picked this one for you.
+
+                {{ random-task }}
+
             {{/if}}
 
         {{ else }}
@@ -25,10 +32,9 @@
                 <h1>Quiz time!</h1>
                 <p>
                     When you click start, ten questions will be displayed. Answer five questions correctly within the
-                    time limit to receive
-                    a reward from your reward list.
+                    time limit to receive a reward from your reward list.
                     However, if you give five wrong answers you will be forced to complete a task from your task list!
-                    <br/>
+                    <hr/>
                 </p>
 
                 <button class="btn btn-primary" {{action "startQuiz"}}>Start!</button>

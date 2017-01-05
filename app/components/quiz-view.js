@@ -9,7 +9,8 @@ export default Ember.Component.extend({
     quizStarted: false,
     quizFinished: false,
     isWinner: false,
-    timeLeft: 120,
+    timeLeft: 5,
+    timeInterval: null,
 
     correctAnswers: 0,
     incorrectAnswers: 0,
@@ -20,14 +21,22 @@ export default Ember.Component.extend({
 
     updateTimer(){
         this.set("timeLeft", this.get("timeLeft") - 1);
+
+        if (this.get('timeLeft') < 1) {
+            this.set('quizFinished', true);
+            this.set('quizStarted', false);
+            clearInterval(this.get('timeInterval'));
+        }
     },
 
     startTimer: Ember.computed(function () {
         let self = this;
 
-        setInterval(function () {
-            self.updateTimer();
-        }, 1000);
+        this.set('timeInterval',
+            setInterval(() => {
+                self.updateTimer();
+            }, 1000)
+        );
     }),
 
     actions: {
@@ -44,14 +53,15 @@ export default Ember.Component.extend({
                     this.set('isWinner', true);
                     this.set('quizFinished', true);
                     this.set('quizStarted', false);
+                    clearInterval(this.get('timeInterval'));
                 }
             } else {
                 this.set("incorrectAnswers", this.get("incorrectAnswers") + 1);
 
-                if (this.get('incorrectAnswers') > 4){
-                    this.set('isWinner', false);
+                if (this.get('incorrectAnswers') > 4) {
                     this.set('quizFinished', true);
                     this.set('quizStarted', false);
+                    clearInterval(this.get('timeInterval'));
                 }
             }
         }

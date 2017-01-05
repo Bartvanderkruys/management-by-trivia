@@ -100,3 +100,10 @@ h1, h2 {
     background-color: rgb(200, 255, 189);
     color: rgb(2, 105, 18);
 }
+
+.random-reward,
+.random-task {
+    margin: 15px 0;
+    border-bottom: 2px solid black;
+    display: inline-block;
+}

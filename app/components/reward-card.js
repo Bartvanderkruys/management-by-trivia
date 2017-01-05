@@ -7,5 +7,5 @@ export default Ember.Component.extend({
         onListItemChanged() {
             this.get('onListItemChanged')();
         }
-    }
+    },
 });

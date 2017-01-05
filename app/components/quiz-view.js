@@ -9,7 +9,7 @@ export default Ember.Component.extend({
     quizStarted: false,
     quizFinished: false,
     isWinner: false,
-    timeLeft: 5,
+    timeLeft: 90,
     timeInterval: null,
 
     correctAnswers: 0,

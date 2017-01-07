@@ -4,6 +4,8 @@ import {storageFor} from "ember-local-storage";
 export default Ember.Component.extend({
 
     store: Ember.inject.service(),
+    questions: null,
+    questionStatuses: [],
 
     canStartQuiz: null,
     quizStarted: false,
@@ -17,6 +19,10 @@ export default Ember.Component.extend({
 
     init(){
         this._super();
+
+        for (let i = 0; i < this.get('questions').content.length; i++) {
+            this.get('questionStatuses').push('help-outline');
+        }
     },
 
     updateTimer(){
@@ -45,9 +51,13 @@ export default Ember.Component.extend({
             this.set('quizStarted', true);
             this.get('startTimer');
         },
-        answerQuestion(isCorrect) {
+        answerQuestion(isCorrect, questionIndex) {
             if (isCorrect) {
                 this.set("correctAnswers", this.get("correctAnswers") + 1);
+
+                let itemList = this.get("questionStatuses");
+                itemList[questionIndex] = "check-circle";
+                this.set('questionStatuses', itemList.slice());
 
                 if (this.get('correctAnswers') > 4) {
                     this.set('isWinner', true);
@@ -57,6 +67,10 @@ export default Ember.Component.extend({
                 }
             } else {
                 this.set("incorrectAnswers", this.get("incorrectAnswers") + 1);
+
+                let itemList = this.get("questionStatuses");
+                itemList[questionIndex] = "remove-circle";
+                this.set('questionStatuses', itemList.slice());
 
                 if (this.get('incorrectAnswers') > 4) {
                     this.set('quizFinished', true);

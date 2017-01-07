@@ -1,57 +1,71 @@
-<div class="col-md-12">
-    <div class="card">
-        {{#if quizStarted}}
-            <h1><span class="monospaced">{{ timeLeft }}</span> Seconds left.</h1>
-            <p>Think fast!</p>
-        {{else if quizFinished}}
+{{#if quizStarted}}
+    <div class="top-bar">
+        <div class="col-md-6 no-padding">
+            <div class="time-left">
+                <h3><span class="monospaced">{{ timeLeft }}</span> Seconds left.</h3>
+            </div>
+        </div>
+        <div class="col-md-6 no-padding">
+            <div class="question-status">
+                {{question-statusses questionStatuses=questionStatuses}}
+            </div>
+        </div>
+    </div>
+{{/if}}
 
-            {{#if isWinner}}
-                <h1>You win!</h1>
-                You have answered 5 correctly. You have earned a reward!
-                We have picked this one for you.
+{{#unless quizStarted}}
+    <div class="col-md-12">
+        <div class="card">
+            {{#if quizFinished}}
+                {{#if isWinner}}
+                    <h1>You win!</h1>
+                    You have answered 5 correctly. You have earned a reward!
+                    We have picked this one for you.
 
-                {{ random-reward }}
+                    {{ random-reward }}
 
-            {{else}}
-                <h1>You lose!</h1>
-                {{#if timeLeft}}
-                    You have answered 5 incorrectly.
                 {{else}}
-                    Time is up.
+                    <h1>You lose!</h1>
+                    {{#if timeLeft}}
+                        You have answered 5 incorrectly.
+                    {{else}}
+                        Time is up.
+                    {{/if}}
+
+                    Time to complete a task! We have picked this one for you.
+
+                    {{ random-task }}
+                {{/if}}
+            {{ else }}
+                {{#if canStartQuiz}}
+                    <h1>Quiz Ready!</h1>
+                    <p>
+                        When you click start, ten questions will be displayed. Answer five questions correctly within
+                        the
+                        time limit to receive a reward from your reward list.
+                        However, if you give five wrong answers you will be forced to complete a task from your task
+                        list!
+                    <hr/>
+                    </p>
+
+                    <button class="btn btn-primary" {{action "startQuiz"}}>Start quiz</button>
+                {{else}}
+                    <h1>Preparations...</h1>
+                    <p>
+                        We can start managing your time when you have defined at least one task and one reward.<br/>
+                        Add items to the lists below to do so.
+                    </p>
                 {{/if}}
 
-                Time to complete a task! We have picked this one for you.
-
-                {{ random-task }}
-
             {{/if}}
-
-        {{ else }}
-
-            {{#if canStartQuiz}}
-                <h1>Quiz Ready!</h1>
-                <p>
-                    When you click start, ten questions will be displayed. Answer five questions correctly within the
-                    time limit to receive a reward from your reward list.
-                    However, if you give five wrong answers you will be forced to complete a task from your task list!
-                    <hr/>
-                </p>
-
-                <button class="btn btn-primary" {{action "startQuiz"}}>Start quiz</button>
-            {{else}}
-                <h1>Preparations...</h1>
-                <p>
-                    We can start managing your time when you have defined at least one task and one reward.<br/>
-                    Add items to the lists below to do so.
-                </p>
-            {{/if}}
-
-        {{/if}}
+        </div>
     </div>
-</div>
+{{/unless}}
 
 {{#if quizStarted}}
-    {{#each questions as |question|}}
-        {{ trivia-question-card question=question onAnswerQuestion=(action 'answerQuestion')}}
-    {{/each}}
+    <div class="quiz-questions">
+        {{#each questions as |question key|}}
+            {{ trivia-question-card question=question questionIndex=key onAnswerQuestion=(action 'answerQuestion')}}
+        {{/each}}
+    </div>
 {{/if}}

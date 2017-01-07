@@ -6,6 +6,7 @@ export default Ember.Component.extend({
     correctAnswer: null,
     answeredCorrectly: false,
     answeredIncorrectly: false,
+    questionIndex: null,
 
     init(){
         this._super();
@@ -46,10 +47,10 @@ export default Ember.Component.extend({
         answerQuestion(isCorrect) {
             if (isCorrect) {
                 this.set('answeredCorrectly', true);
-                this.get('onAnswerQuestion')(true);
+                this.get('onAnswerQuestion')(true, this.get('questionIndex'));
             } else {
                 this.set('answeredIncorrectly', true);
-                this.get('onAnswerQuestion')(false);
+                this.get('onAnswerQuestion')(false, this.get('questionIndex'));
             }
         }
     }

@@ -29,7 +29,7 @@
         {{ else }}
 
             {{#if canStartQuiz}}
-                <h1>Quiz time!</h1>
+                <h1>Quiz Ready!</h1>
                 <p>
                     When you click start, ten questions will be displayed. Answer five questions correctly within the
                     time limit to receive a reward from your reward list.
@@ -37,7 +37,7 @@
                     <hr/>
                 </p>
 
-                <button class="btn btn-primary" {{action "startQuiz"}}>Start!</button>
+                <button class="btn btn-primary" {{action "startQuiz"}}>Start quiz</button>
             {{else}}
                 <h1>Preparations...</h1>
                 <p>

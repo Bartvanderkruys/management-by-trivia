@@ -145,6 +145,7 @@ h1, h2 {
 }
 
 .time-left h3 {
+    float: left;
     margin: 0;
     padding: 15px 0;
 }
@@ -155,4 +156,20 @@ h1, h2 {
 
 .check-circle{
     color: rgb(200, 255, 189);
+}
+
+@media only screen and (max-width: 600px)  {
+    .question-status i {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 500px)  {
+    .question-status {
+        float: left;
+        padding: 0;
+    }
+    .time-left h3{
+        padding: 5px 0;
+    }
 }

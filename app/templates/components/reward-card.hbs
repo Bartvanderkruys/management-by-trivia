@@ -3,8 +3,19 @@
 
         <h2>Reward</h2>
 
+        <p>Fill this list with fun things you want to do.</p>
+
         {{ editable-list input-placeholder="Watch an episode of Westworld..."
                          storage=rewardsStorage
                          onListItemChanged=(action "onListItemChanged")}}
+
+        {{#if completedRewardsStorage}}
+
+            <hr/>
+
+            {{ completed-list storage=completedRewardsStorage}}
+
+        {{/if}}
+
     </div>
 </div>

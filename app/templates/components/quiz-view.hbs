@@ -14,9 +14,9 @@
 {{/if}}
 
 {{#unless quizStarted}}
-    <div class="col-md-12">
-        <div class="card">
-            {{#if quizFinished}}
+    {{#if quizFinished}}
+        <div class="col-md-6">
+            <div class="card">
                 {{#if isWinner}}
                     <h1>You win!</h1>
                     You have answered 5 correctly. You have earned a reward!
@@ -36,7 +36,11 @@
 
                     {{ random-task }}
                 {{/if}}
-            {{ else }}
+            </div>
+        </div>
+    {{ else }}
+        <div class="col-md-12">
+            <div class="card">
                 {{#if canStartQuiz}}
                     <h1>Quiz Ready!</h1>
                     <p>
@@ -56,10 +60,9 @@
                         Add items to the lists below to do so.
                     </p>
                 {{/if}}
-
-            {{/if}}
+            </div>
         </div>
-    </div>
+    {{/if}}
 {{/unless}}
 
 {{#if quizStarted}}

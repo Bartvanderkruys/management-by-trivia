@@ -1,7 +1,7 @@
-# mgmt-by-trivia
+# Time Management By Trivia
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+A time management system powered by trivia questions. Users are rewarded or urged to complete tasks based on their 
+ability to answer trivia questions. I did this little app to get to know the Ember JavaScript framework (which seems great).
 
 ## Prerequisites
 

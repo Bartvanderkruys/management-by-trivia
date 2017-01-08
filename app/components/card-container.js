@@ -9,7 +9,7 @@ export default Ember.Component.extend({
         return !!(this.get('rewardsStorage').content.length && this.get('tasksStorage').content.length);
     }),
 
-    displayIntroduction: true,
+    displayIntroductionOnly: true,
     displayQuizCard: false,
     displayLists: false,
 
@@ -17,14 +17,14 @@ export default Ember.Component.extend({
         this._super();
 
         if (this.get('rewardsStorage').content.length || this.get('tasksStorage').content.length ){
-            this.set('displayIntroduction', false);
+            this.set('displayIntroductionOnly', false);
             this.set('displayLists', true);
         }
     },
 
     actions: {
         hideIntroduction(){
-            this.set('displayIntroduction', false);
+            this.set('displayIntroductionOnly', false);
             this.set('displayLists', true);
         },
         displayLists(){

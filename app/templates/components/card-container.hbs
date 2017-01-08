@@ -1,20 +1,19 @@
 <div class="row top-card-row">
-    {{#if displayIntroduction}}
+    {{#if displayIntroductionOnly}}
 
-        {{ introduction-card columnWidth=introductionCardWidth onClickPrimary=(action "hideIntroduction")}}
+    {{ introduction-card onClickPrimary=(action "hideIntroduction")}}
 
     {{else}}
 
-        {{ quiz-view questions=questions displayQuizCard=displayQuizCard canStartQuiz=canStartQuiz
-                     onQuizStart=(action "hideLists") }}
+        {{ quiz-view questions=questions canStartQuiz=canStartQuiz onQuizStart=(action "hideLists") }}
 
     {{/if}}
 
     {{#if displayLists}}
 
-        {{ task-card columnWidth=taskCardWidth onListItemChanged=(action "onListItemChanged")}}
+        {{ task-card onListItemChanged=(action "onListItemChanged")}}
 
-        {{ reward-card columnWidth=rewardCardWidth onListItemChanged=(action "onListItemChanged")}}
+        {{ reward-card onListItemChanged=(action "onListItemChanged")}}
 
     {{/if}}
 

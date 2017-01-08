@@ -1,0 +1,5 @@
+<div class="list-group completed-list">
+    {{#each storage as |item|}}
+        {{ editable-list-item item=item onClickClear=(action "deleteItem" item) }}
+    {{/each}}
+</div>

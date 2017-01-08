@@ -3,8 +3,19 @@
 
         <h2>Tasks</h2>
 
+        <p>Add things you need to do to this list.</p>
+
         {{ editable-list input-placeholder="Do the dishes..."
                          storage=tasksStorage
                          onListItemChanged=(action "onListItemChanged")}}
+
+        {{#if completedTasksStorage}}
+
+            <hr/>
+
+            {{ completed-list storage=completedTasksStorage}}
+
+        {{/if}}
+
     </div>
 </div>

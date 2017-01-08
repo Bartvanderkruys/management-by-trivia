@@ -3,6 +3,7 @@ import {storageFor} from 'ember-local-storage';
 
 export default Ember.Component.extend({
     tasksStorage: storageFor('Tasks'),
+    completedTasksStorage: storageFor('CompletedTasks'),
     randomTask: null,
     init(){
         this._super();
@@ -16,6 +17,8 @@ export default Ember.Component.extend({
         // TODO use array filter prototype to make function more concise.
 
         completeTask(){
+            this.get('completedTasksStorage').addObject(this.get('randomTask'));
+
             let storageItems = this.get('tasksStorage').content;
 
             for (let i = 0; i < storageItems.length; i++) {
